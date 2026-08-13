@@ -3,11 +3,20 @@ import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
 import { getCategories, getTopProducts } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
-  const [categories, featured] = await Promise.all([
-    getCategories(),
-    getTopProducts(6),
-  ]);
+  let categories = [];
+  let featured = [];
+
+  try {
+    [categories, featured] = await Promise.all([
+      getCategories(),
+      getTopProducts(6),
+    ]);
+  } catch (error) {
+    console.error("Failed to load home page data:", error);
+  }
 
   const heroImage = featured.find((product) => product.main_image)?.main_image;
 
