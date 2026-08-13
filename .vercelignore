@@ -1,0 +1,14 @@
+.git/
+node_modules/
+.vscode/
+.DS_Store
+.env
+.env.local
+.env.*.local
+tests/
+coverage/
+.idea/
+*.log
+dist/
+build/
+.vagrant/
